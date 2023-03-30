@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Questões{% endblock %}</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'votacao/style.css' %}"/>
+
+</head>
+<body>
+
+
+<div class="nav-menu">
+
+    <nav>
+        {% load static %}
+        <h2>
+            <img src="{% static 'media/isctelogo.png' %}">
+        </h2>
+
+        <ul>
+            {% if user.is_authenticated %}
+            <h4>Bem Vindo, {{ user.username }}!</h4>
+            <h4>Votos realizados: {{ user.aluno.opcao_set.count }}</h4>
+            <li><a href="{% url 'votacao:perfil'  %}">Ver Perfil</a></li>
+            |
+            <li><a href="{% url 'votacao:logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+{% else %}
+<h4>Registe-se ou faça Login</h4>
+<li><a href="{% url 'votacao:login'  %}">Login</a></li>
+|
+<li><a href="{% url 'votacao:registo' %}">Registo</a></li>
+</ul>
+</nav>
+</div>
+{% endif %}
+
+
+<div class="content">
+    {% block content %}
+    <div class="container-questions">
+        <h1 class="title">Questões</h1>
+        {% if latest_question_list %}
+        {% for questao in latest_question_list %}
+        <div class="questions-section">
+            <ul class="questions-list">
+                <li>
+                    <a class="Questions" href="{% url 'votacao:detalhe' questao.id %}">
+                        {{ questao.questao_texto }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        {% endfor %}
+        <br>
+        {% else %}
+        <p>Nao ha questoes disponiveis.</p>
+        {% endif %}
+        {% if request.user.is_staff %}
+          {% block controls_&_options %}
+        <a href="{% url 'votacao:criarquestao' %}">
+            <button class="create-question-btn"> Criar nova questão</button>
+        </a>
+        {% endblock %}
+        {% endif %}
+    </div>
+    {% endblock %}
+</div>
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+        <h3><span>ISCTE Questões</span></h3>
+
+
+    </div>
+
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p>Avenida das Forças Armadas, 1649-026 Lisboa</p>
+        </div>
+
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+351 217 903 000</p>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:geral@iscte.pt">geral@iscte.pt</a></p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>Sobre</span>
+            <strong>ISCTE</strong> é uma universidade em Lisboa muito bem conceituada.
+        </p>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/ISCTEIUL"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/iscte_iul/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/school/iscte/?originalSubdomain=pt"><i class="fa fa-linkedin"></i></a>
+            <a href="https://twitter.com/iscteiul"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/user/iultv"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+

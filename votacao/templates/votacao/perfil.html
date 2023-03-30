@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+</head>
+<body>
+    <h1>Perfil do Aluno</h1>
+    <p>Username: {{ aluno.user.username }}</p>
+    <p>Email: {{ aluno.user.email }}</p>
+    <p>Curso: {{ aluno.curso }}</p>
+    <p>Total de Votos: {{ total_votos}}</p>
+    <p><a href="{% url 'votacao:index' %}"><button> Início </button></a></p>
+</body>
+</html>

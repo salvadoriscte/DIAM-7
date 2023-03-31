@@ -6,7 +6,6 @@
   font-family: 'Josefin Sans', sans-serif;<
 }
 
-
 /* Header/nav */
 .nav-menu {
   padding-bottom: 30px;
@@ -73,9 +72,10 @@ img {
 }
 .content{
   background-color: #ADD8E6;
-  height: 600px;
+  height: 1000px;
   padding-top: 100px;
   padding-left: 100px;
+  display: center;
 
 }
 .container-questions{
@@ -120,18 +120,92 @@ img {
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
-  background-color: #ea5c44; /* Nova cor de fundo */
+  background-color: #3a5f87; /* Nova cor de fundo */
   margin: 20px 0px;
   margin-left: 780px;
   display: inline-block;
   transition: all 0.3s ease;
 }
 
+
 .create-question-btn:hover {
   background-color: #e03a1b; /* Nova cor de fundo no hover */
   color: #ffffff;
   text-decoration: none;
 }
+
+/*OPCOES */
+
+   .option-container {
+    display: flex;
+    align-items: center;
+}
+
+.option-row {
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.option-container input[type="radio"] {
+      display: none;
+}
+
+.option-container label {
+    background-color: #f1f1f1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.option-container:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+.option-container input[type="radio"]:checked + label {
+    background-color: #ccc;
+}
+.option-container:hover label {
+    color: #3F71EA;
+}
+.action-btn{
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #3a5f87; /* Cor de fundo do botão */
+  margin: 8px; /* Adiciona margem ao redor dos botões */
+  display: inline-block; /* Adiciona a propriedade display inline-block */
+  transition: all 0.3s ease;
+}
+.action-btn:hover{
+  background-color: #e03a1b; /* Nova cor de fundo no hover */
+  color: #ffffff;
+  text-decoration: none;
+}
+.button-container{
+   display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.button-remover-opcao {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
 /* Footer */
 @media (max-height:800px) {
   footer {
@@ -452,11 +526,12 @@ img {
 }
 
 input[type="submit"] {
-  width: 30%;
+  width: 20%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 10px;
   margin-bottom: 20px;
+  margin-left: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;

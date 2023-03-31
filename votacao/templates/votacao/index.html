@@ -55,6 +55,7 @@
                 <li>
                     <a class="Questions" href="{% url 'votacao:detalhe' questao.id %}">
                         {{ questao.questao_texto }}
+
                     </a>
                 </li>
             </ul>
@@ -66,7 +67,7 @@
         <p>Nao ha questoes disponiveis.</p>
         {% endif %}
         {% if request.user.is_staff %}
-          {% block controls_&_options %}
+         {% block controls_&_options %}
         <a href="{% url 'votacao:criarquestao' %}">
             <button class="create-question-btn"> Criar nova questão</button>
         </a>
